@@ -14,4 +14,3 @@ def read_local(path: str, mode: str = "essential"):
     return data
 
 # def read_remote()
-# 'https://cloud.iexapis.com/stable/stock/SPY/chart/1y?token=pk_8ae6e7e04e0241348774a921c73e7629'
