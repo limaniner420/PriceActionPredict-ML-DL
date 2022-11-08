@@ -23,3 +23,4 @@ def apply_indicators(data: pd.DataFrame):
     data[['ma_long', 'ma_short']] = indc.movingAverage(data)[['ma_long', 'ma_short']]
 
     return data
+
