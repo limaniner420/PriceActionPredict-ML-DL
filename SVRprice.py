@@ -14,7 +14,7 @@ pd.options.mode.chained_assignment = None  # default='warn'
 
 try:
     file = pd.read_json("data.json")
-    data = pd.DataFrame(file['MSFT']['chart'])    
+    data = pd.DataFrame(file['GOOG']['chart'])    
     weight = 0
 except Exception as e:
     print("The stock data haven't fetched, please fetch first in the fetch.py")
