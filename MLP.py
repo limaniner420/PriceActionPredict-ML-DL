@@ -39,7 +39,7 @@ def MLP(symbol: str, apply_inds: str = "none", window: int = 1, optimise: bool =
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, shuffle = False)
     if(optimise):
-        params = optimise(data)
+        params = optimise_hp(data)
         pipeline = make_pipeline(StandardScaler(), mlp.MLPRegressor(hidden_layer_sizes = params["hidden_layer_sizes"], 
                                                                     activation = params["activation"], 
                                                                     solver = params["solver"],
@@ -63,7 +63,7 @@ def MLP(symbol: str, apply_inds: str = "none", window: int = 1, optimise: bool =
                     }
     return metric_values, p, y_test
 
-def optimise(data: pd.DataFrame):
+def optimise_hp(data: pd.DataFrame):
     
     X = data.drop(["t+1"], axis = 1)
     y = data["t+1"]
