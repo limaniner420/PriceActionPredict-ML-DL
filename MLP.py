@@ -22,6 +22,9 @@ def MLP(symbol: str, apply_inds: str = "none", window: int = 1, optimise: bool =
         if(apply_inds == "cross"):
             data["ma_cross"] = indc.ma_cross(data, t_long = 20, t_short = 5)
             data["macd_cross"] = indc.macd_cross(data)
+        elif(apply_inds == "quant"):
+            data = pre.apply_indicators(data)
+            data.drop(["ma_cross", "macd_cross"], axis = 1)
         elif(apply_inds == "full"):
             data = pre.apply_indicators(data)
         else: raise Exception("Invalid indicator scope")
