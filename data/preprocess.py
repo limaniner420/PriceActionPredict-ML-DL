@@ -6,12 +6,10 @@ SET_ESS = ["date", "close", "high", "low", "open", "symbol", "volume", "change",
 
 def read_local(path: str, mode: str = "essential"):
     data = pd.read_json(path)
-
     if(mode == "minimal"):
         data = data[SET_MIN]
     elif(mode == "essential"):
         data = data[SET_ESS]
-
     return data
 
 def apply_indicators(data: pd.DataFrame):
@@ -20,7 +18,6 @@ def apply_indicators(data: pd.DataFrame):
     data['rsi'] = indc.rsi(data)['RSI']
     data['volatility'] = indc.volatility(data)
     data[['K', 'D']] = indc.Stochastic(data)[['K', 'D']]
-    data[['ma_long', 'ma_short']] = indc.movingAverage(data)[['ma_long', 'ma_short']]
-
+    data[['ma_long', 'ma_short']] = indc.movingAverage(data, t_long = 20, t_short = 5)[['ma_long', 'ma_short']]
     return data
 
